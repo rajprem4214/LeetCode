@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
-        vector<int>v;
+     
     sort(nums.begin(),nums.end());
     int i=0,j=nums.size()-1;
         int m=INT_MIN;
