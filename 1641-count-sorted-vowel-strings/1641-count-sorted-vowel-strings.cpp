@@ -18,6 +18,7 @@ public:
                 tmp = count;
                 count-=track[j];
                 track[j] = tmp;
+                
             }
             
             // update count for current step
