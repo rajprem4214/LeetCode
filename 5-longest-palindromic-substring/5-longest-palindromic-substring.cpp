@@ -1,53 +1,30 @@
-
 class Solution {
 public:
-    string longestPalindrome(string s) {
-        
-        int left, right;
-        
-        
-        int n=s.size();
-                if(n==0)        //empty string
-                return ""; 
-        
-        string res="";   //this will be our answer string
-        for(int index=0;index<n;index++)
-        {
-            left= index;
-            right = index;
-          
-            
-            while(left>=0 && right<s.size()&& s[left]==s[right])
-            {
-                if(res.size()<(right-left+1))
-                    res=s.substr(left, right-left+1);
-                
-                left--;
-                right++;
-            }
-            
-            
-        }
-        
-        
-             for(int index=0;index<n;index++)
-        {
-            left= index;
-            right = index+1;
-           
-            
-            while(left>=0 && right<s.size()&& s[left]==s[right])
-            {
-                if(res.size()<(right-left+1))
-                    res=s.substr(left, right-left+1);
-                
-                left--;
-                right++;
-            }
-            
-            
-        }
-        
-        return res;
+	string longestPalindrome(string s) {
+		int n=s.size(),start=0,maxLen=1;
+		if(!n)  return "";
+		int dp[n][n];
+		memset(dp,-1,sizeof dp);
+		for(int i=0;i<n;i++)    dp[i][i] = 1;
+		for(int i=0;i<n-1;i++)
+			if(s[i]==s[i+1])
+			{
+				dp[i][i+1] = 1;
+				start = i;
+				maxLen = 2;
+			}
+		for(int k=3;k<=n;k++){
+			for(int i=0;i<n - k + 1;i++){
+				int j = i + k - 1;
+				if(dp[i+1][j-1]==1 && s[i]==s[j]){
+					dp[i][j] = 1;
+					if (k > maxLen) {
+						start = i; 
+						maxLen = k; 
+					} 
+				}
+			}
 		}
-		};
+		return s.substr(start, maxLen);
+	}
+};
