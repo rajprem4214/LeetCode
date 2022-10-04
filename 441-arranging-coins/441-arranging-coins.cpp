@@ -2,7 +2,7 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-       ll int l = 1, h = n;
+       ll int l = 1, h = 1e7;
        ll int ans = -1;
         while(l<=h)
         {
