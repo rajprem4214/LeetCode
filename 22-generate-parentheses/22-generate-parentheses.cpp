@@ -7,7 +7,7 @@ public:
             patterns.push_back(s);
             return;
         }
-        
+        f
         if(open == n){
             getPatterns(open, close+1, n, s + ")");
         }
