@@ -13,7 +13,9 @@ public:
             return dp[n];
         
          int one = f(n-1, dp);
-        int two = f(n-2, dp);
+        int two = 0;
+        if(n>1)
+         two = f(n-2, dp);
         
         return dp[n] = one+two;
         
