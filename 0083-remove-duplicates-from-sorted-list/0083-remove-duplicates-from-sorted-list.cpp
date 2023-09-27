@@ -11,35 +11,18 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* temp = head;
-//         // ListNode* ans;
-        
-//         while(temp != nullptr && temp->next != nullptr)
-//         {
-//             if(temp->val == temp->next->val)
-//             {
-//                 ListNode* duplicate = temp->next;
-//                 temp->next = duplicate->next;
-//                 delete duplicate;
-//             }
-//             temp = temp->next;
-//         }
-//         return head;
-        ListNode* ans;
-        set<int> s;
-        while(temp != nullptr)
-        {
-            s.insert(temp->val);
-            temp = temp->next;
+         ListNode* current = head;
+
+        while (current != nullptr && current->next != nullptr) {
+            if (current->val == current->next->val) {
+                ListNode* duplicate = current->next;
+                current->next = duplicate->next;
+                delete duplicate;
+            } else {
+                current = current->next;
+            }
         }
-        ListNode* node = new ListNode();
-        temp = node;
-        for(auto it:s)
-        {
-            ListNode* node1 = new ListNode(it);
-            temp->next = node1;
-            temp = temp->next;
-        }
-        return node->next;
+
+        return head;
     }
 };
